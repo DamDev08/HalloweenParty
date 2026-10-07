@@ -1,96 +1,84 @@
 @font-face {
   font-family: "HalloweenMorning";
-  src: url(Database/Polices/HalloweenMorning.ttf) format(truetype);
+  src: url(Database/Polices/HalloweenMorning.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "MidnightMinutes";
-  src: url(Database/Polices/MidnightMinutes.otf) format(truetype);
+  src: url(Database/Polices/MidnightMinutes.otf) format("opentype");
+  font-display: swap;
 }
 @font-face {
   font-family: "SpookyHalloween";
-  src: url(Database/Polices/SpookyHalloween.ttf);
+  src: url(Database/Polices/SpookyHalloween.ttf) format("truetype");
+  font-display: swap;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 120vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  flex-direction: column;
+  background-color: #0b0b12;
   background-image: url(Database/Images/Halloween/jpeg/halloweenBackground.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.modal {
-  background-image: url(Database/Images/Halloween/jpeg/halloweenPaper.jpg);
-  
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 450px;
-  padding: 30px 40px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 08px;
-  z-index: 98;
-  display: none;
-  /*ne pas oublier display : "none" pour ne 
-pas apparaitre au loading de la page*/
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 
-h3{
-  text-align: center;
-  font-family: "midnightMinutes";
-  font-size: 2em;
-  color:rgb(55, 0, 252);
-  text-shadow:black;
-}
-
-.modal p {
-  width: auto;
-  text-align:center;
-  margin: 20px 0;
-  color: rgb(0, 0, 0);
-  font-size: 1.8em;
-  font-weight: bolder;
-  font-family: "midnightMinutes";
-  
-  
-}
-
-.btns {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-}
-
-.modal button {
-  width: 25%;
-  position: relative;
-  margin: auto;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 1em;
-  background-color: rgba(255, 255, 0, 0);
-  color: #8400ff;
-  text-decoration: none;
-  padding: 5px 0;
-  cursor: pointer;
-}
-
-.modal button:hover {
-  background-color: rgb(107, 13, 13);
-  color: #fff;
-}
-
+/* ---------- Page (pluie + éclairs) ---------- */
 .rain {
-  width: 100vw;
-  height: 100vh;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding:
+    max(16px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+}
+.rain::before,
+.rain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+/* éclairs */
+.rain::before {
+  z-index: -1;
+  background-image: url(Database/Images/Halloween/png/Lightning.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: lightning 10s linear infinite;
+}
+/* pluie */
+.rain::after {
+  z-index: -2;
   background-image: url(Database/Images/Halloween/png/rain.png);
   animation: rain 0.3s linear infinite;
 }
@@ -102,275 +90,261 @@ h3{
     background-position: 20% 100%;
   }
 }
-.rain::before {
-  content: "";
-  position: absolute;
-  width: 110vw;
-  height: 90vh;
-  background-image: url(Database/Images/Halloween/png/Lightning.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  top: -95px;
-  animation: lightning 10s linear infinite;
-  opacity: 1;
-}
 @keyframes lightning {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.5;
-  }
-  21% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 1;
-  }
-  30% {
-    opacity: 1;
-  }
-  31% {
-    opacity: 0.5;
-  }
-  32% {
-    opacity: 0;
-  }
-  33% {
-    opacity: 0;
-  }
-  34% {
-    opacity: 0;
-  }
-  35% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.5;
-  }
-  41% {
-    opacity: 1;
-  }
-  42% {
-    opacity: 1;
-  }
-  43% {
-    opacity: 1;
-  }
-  44% {
-    opacity: 1;
-  }
-  45% {
-    opacity: 0.5;
-  }
-  60% {
-    opacity: 0;
-  }
-  61% {
-    opacity: 1;
-  }
-  62% {
-    opacity: 1;
-  }
-  63% {
-    opacity: 1;
-  }
-  64% {
-    opacity: 1;
-  }
-  65% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 0; }
+  20% { opacity: 0.5; }
+  21%, 30% { opacity: 1; }
+  31% { opacity: 0.5; }
+  32%, 35% { opacity: 0; }
+  40% { opacity: 0.5; }
+  41%, 44% { opacity: 1; }
+  45% { opacity: 0.5; }
+  60% { opacity: 0; }
+  61%, 65% { opacity: 1; }
+  100% { opacity: 0; }
 }
+
+/* ---------- Structure ---------- */
+.intro,
+.sb,
+.gb,
+footer {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
 h1 {
-  /*background-color: rgb(75, 75, 75);*/
+  margin: 0.6em 0 0;
   color: darkorange;
-  font-family: "HalloweenMorning", sans-serif;
-  font-size: 3.5rem;
+  font-family: "HalloweenMorning", Impact, sans-serif;
+  font-size: clamp(2.25rem, 11vw, 4rem);
+  line-height: 1.1;
   text-align: center;
+  text-wrap: balance;
 }
+
 .intro {
-  /*background-color: rgb(150, 152, 16);*/
-  margin: 25px 5px 0 5px;
+  margin-top: clamp(16px, 4vh, 32px);
 }
 h2 {
-  /*background-color: rgb(255, 255, 255);*/
-  position: relative;
+  margin: 0.5em 0 0;
   text-align: start;
   color: rgba(255, 0, 0, 0.93);
-  font-family: "MidnightMinutes", sans-serif;
+  font-family: "MidnightMinutes", Georgia, serif;
   font-style: italic;
-  font-size: 2em;
+  font-size: clamp(1.4rem, 6vw, 2.2rem);
 }
 .witch {
-  position: relative;
-  left: 65%;
+  display: block;
+  margin-left: auto;
+  width: clamp(96px, 30%, 220px);
+  height: auto;
   border-radius: 50%;
-  box-shadow: 0px 0px 5px 0px #fff, 0px 0px 5px 0px #000fff;
+  box-shadow: 0 0 5px 0 #fff, 0 0 5px 0 #000fff;
   animation: pulse 1s infinite;
   background-image: url(Database/Images/Halloween/png/fullMoon.png);
   background-size: cover;
-  margin: auto;
-  width: 30%;
 }
 @keyframes pulse {
   to {
-    box-shadow: 0px 0px 30px #fff, 0px 0px 30px #000fff;
+    box-shadow: 0 0 30px #fff, 0 0 30px #000fff;
   }
 }
+
 .sb {
-  /*background-color: rgb(7, 22, 153);*/
-  margin: 75px 5px 0 5px;
-}
-#spooky {
-  position: relative;
-  right: 30%;
-  background: #ffffff00;
-  transform: rotate(-8deg);
-  width: 30%;
-}
-.spookyButton {
-  background: #00000000;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-#spookyPopupOverlay {
-  position: fixed;
-  max-width: 350px;
-  top: 150px;
-  left: 30px;
-  right: 30px;
-  bottom: 150px;
-  background: #af111100;
-  border-radius: 10%;
-  z-index: 98;
-  display: none;
-}
-#spookyPopupOverlay.open {
-  display: block !important;
-}
-.spookyPopupContent {
-  /*background-color: rgb(0, 0, 0);*/
-  background-image: url(Database/Images/Halloween/jpeg/zombieHand.jpg);
-  background-size: cover;
-  background-position: center;
-  width: 85%;
-  height: 50%;
-  max-width: 300px;
-  padding: 3px;
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 35%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-family: "HalloweenMorning";
-  font-size: 1.2em;
-  color: rgb(255, 0, 0);
-}
-.spookyPopupExit {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  padding: 3.5px;
-  text-decoration: none;
-  color: rgb(54, 96, 148);
-  font-weight: bold;
-  background: #fc0000a1;
-  border-radius: 15%;
-  border: solid 1px black;
-  cursor: pointer;
+  margin-top: clamp(40px, 9vh, 75px);
 }
 .gb {
-  /*background-color: rgb(8, 226, 168);*/
-  margin: 100px 5px 0 5px;
+  margin-top: clamp(48px, 12vh, 100px);
 }
-#ghost {
-  background: #ffffff00;
-  width: 60%;
-}
+
+/* ---------- Boutons images ---------- */
+.spookyButton,
 .ghostButton {
-  position: relative;
-  left: 30%;
-  background: #00000000;
+  display: block;
+  padding: 0;
+  background: transparent;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease;
+}
+.ghostButton {
+  margin-left: auto;
+  text-align: center;
+}
+@media (hover: hover) {
+  .spookyButton:hover,
+  .ghostButton:hover {
+    transform: scale(1.05);
+  }
+}
+#spooky {
+  display: block;
+  width: clamp(110px, 32vw, 220px);
+  height: auto;
+  transform: rotate(-8deg);
+}
+#ghost {
+  display: block;
+  width: clamp(150px, 55vw, 320px);
+  height: auto;
+  margin-inline: auto;
 }
 .clique {
-  font-family: "MidnightMinutes";
-  font-size: 1.5em;
-  font-style: bold;
+  display: block;
+  margin: 0 0 1.2rem;
+  font-family: "MidnightMinutes", Georgia, serif;
+  font-size: clamp(1.1rem, 5vw, 1.5rem);
+  font-weight: bold;
   color: rgb(255, 102, 0);
   transform: rotate(-25deg);
 }
-#ghostPopupOverlay {
-  position: fixed;
-  max-width: 350px;
-  top: 150px;
-  left: 30px;
-  right: 30px;
-  bottom: 150px;
-  background: #af111100;
-  border-radius: 10%;
-  z-index: 98;
+
+/* ---------- Fenêtre « fond sonore » ---------- */
+.modal {
   display: none;
-}
-#ghostPopupOverlay.open {
-  display: block !important;
-}
-.ghostPopupContent {
-  /*background-color: rgb(0, 0, 0);*/
-  background-image: url(Database/Images/Halloween/jpeg/clownHorrible.jpg);
-  background-size: cover;
-  background-position: center;
-  width: 85%;
-  height: 50%;
-  max-width: 300px;
-  padding: 3px;
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
+  position: fixed;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 35%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-family: "HalloweenMorning";
-  font-size: 1.2em;
-  color: rgb(55, 255, 0);
+  z-index: 99;
+  width: min(450px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: clamp(18px, 5vw, 30px) clamp(18px, 6vw, 40px);
+  border-radius: 8px;
+  background-image: url(Database/Images/Halloween/jpeg/halloweenPaper.jpg);
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
 }
-.ghostPopupExit {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  padding: 3.5px;
-  text-decoration: none;
-  color: rgb(160, 7, 7);
-  font-weight: bold;
-  background: rgba(55, 255, 0, 0.665);
-  border-radius: 15%;
-  border: solid 1px black;
+.modal.open {
+  display: block;
+}
+h3 {
+  margin: 0 0 0.5em;
+  text-align: center;
+  font-family: "MidnightMinutes", Georgia, serif;
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  color: rgb(55, 0, 252);
+}
+.modal p {
+  margin: 20px 0;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: clamp(1.25rem, 5.5vw, 1.8rem);
+  font-weight: bolder;
+  font-family: "MidnightMinutes", Georgia, serif;
+}
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.modal button {
+  flex: 1 1 140px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 1em;
+  text-align: center;
+  background-color: transparent;
+  color: #8400ff;
   cursor: pointer;
 }
-footer {
+@media (hover: hover) {
+  .modal button:hover {
+    background-color: rgb(107, 13, 13);
+    color: #fff;
+  }
+}
+
+/* ---------- Pop-ups (invitation / charade) ---------- */
+.popupOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding:
+    max(16px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+  background: rgba(0, 0, 0, 0.45);
+}
+.popupOverlay.open {
   display: flex;
-  justify-content: start;
-  align-items: end;
-  width: 100vw;
-  background-color: rgba(10, 10, 10, 0);
-  font-family: "SpookyHalloween";
-  font-size: 1em;
+  align-items: center;
+  align-items: safe center;
+  justify-content: center;
+}
+.spookyPopupContent,
+.ghostPopupContent {
+  position: relative;
+  width: min(100%, 340px);
+  padding: 3rem 1.5rem 1.75rem;
+  border-radius: 28px;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  font-family: "HalloweenMorning", Impact, sans-serif;
+  font-size: clamp(1rem, 4.2vw, 1.2rem);
+  line-height: 1.4;
+  text-shadow: 0 1px 3px #000, 0 0 6px #000;
+}
+.spookyPopupContent p,
+.ghostPopupContent p {
+  margin: 0;
+}
+.spookyPopupContent {
+  background-image: url(Database/Images/Halloween/jpeg/zombieHand.jpg);
+  color: rgb(255, 0, 0);
+}
+.ghostPopupContent {
+  background-image: url(Database/Images/Halloween/jpeg/clownHorrible.jpg);
+  color: rgb(55, 255, 0);
+}
+.spookyPopupExit,
+.ghostPopupExit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-height: 40px;
+  padding: 6px 12px;
+  border: solid 1px black;
+  border-radius: 10px;
+  font-weight: bold;
+  text-shadow: none;
+  cursor: pointer;
+}
+.spookyPopupExit {
+  color: rgb(54, 96, 148);
+  background: #fc0000a1;
+}
+.ghostPopupExit {
+  color: rgb(160, 7, 7);
+  background: rgba(55, 255, 0, 0.665);
+}
+
+/* ---------- Pied de page ---------- */
+footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  font-family: "SpookyHalloween", Impact, sans-serif;
+  font-size: clamp(1rem, 4vw, 1.2rem);
   color: rgb(230, 250, 6);
+}
+
+/* ---------- Adaptations ---------- */
+/* Téléphone en mode paysage / écrans très bas */
+@media (max-height: 480px) and (orientation: landscape) {
+  .sb { margin-top: 24px; }
+  .gb { margin-top: 32px; }
+  .modal { padding: 14px 20px; }
+  .modal p { margin: 10px 0; }
 }

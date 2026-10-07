@@ -2,63 +2,70 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Invitation à ma fête d'halloween">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Invitation à ma fête d'Halloween">
+    <meta name="theme-color" content="#0b0b12">
     <title>Halloween Party!</title>
+    <link rel="stylesheet" href="styles.min.css">
+    <script src="script.min.js" defer></script>
   </head>
   <body>
     <main class="rain">
-      <div class="modal">
-      <h3>Un fond sonore pour te mettre dans l'ambiance est disponible!</h3>
-      <p>Auras-tu assez de<br>
-      courage pour l'activer???</p>
-      <div class="btns"><button id="btnClose">AAAAHHHH!! Noooon!!!</button>
-      <button id="btnPlay" onclick="playMusic()">MEME PAS PEUR!!!</button></div>
-    </div>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h3 id="modalTitle">Un fond sonore pour te mettre dans l'ambiance est disponible!</h3>
+        <p>Auras-tu assez de<br>courage pour l'activer???</p>
+        <div class="btns">
+          <button type="button" id="btnClose">AAAAHHHH!! Noooon!!!</button>
+          <button type="button" id="btnPlay">MEME PAS PEUR!!!</button>
+        </div>
+      </div>
+
       <h1>SCARY PARTY!</h1>
+
       <section class="intro">
-        <img class="witch" src="Database/Images/Halloween/png/witch.png" alt="png"/>
+        <img class="witch" src="Database/Images/Halloween/png/witch.png" alt="Une sorcière devant la pleine lune" decoding="async">
         <h2>COMING SOON...</h2>
       </section>
+
       <section class="sb">
-        <div id="spookyPopupOverlay">
-          <div class="spookyPopupContent">
+        <div class="popupOverlay" id="spookyPopupOverlay">
+          <div class="spookyPopupContent" role="dialog" aria-modal="true" aria-label="Invitation">
             <p>
-              L'heure d'affronter tes plus grandes peurs est arrivée...<br/><br/>
-              Enfile ton plus effrayant costume<br/>
-              et rejoins-nous dans l'antre de la bête si tu en as le courage!<br/><br/>
-              Nous t'attendrons à la tombée de la nuit sanglante<br/>
-              le 31 OCTOBRE 2023 à 20H00<br/>
+              L'heure d'affronter tes plus grandes peurs est arrivée...<br><br>
+              Enfile ton plus effrayant costume<br>
+              et rejoins-nous dans l'antre de la bête si tu en as le courage!<br><br>
+              Nous t'attendrons à la tombée de la nuit sanglante<br>
+              le 31 OCTOBRE 2026 à 20H00<br>
             </p>
-            <a href="javascript:void(0)" class="spookyPopupExit" onclick="spookyTogglePopup();">FERMER</a>
+            <button type="button" class="spookyPopupExit">FERMER</button>
           </div>
         </div>
-        <button class="spookyButton" onclick="spookySound();spookyTogglePopup();">
-          <img id="spooky" src="Database/Images/Halloween/png/spooky.png" alt="png"/>
+        <button type="button" class="spookyButton" id="spookyBtn" aria-label="Découvrir l'invitation" aria-haspopup="dialog" aria-expanded="false">
+          <img id="spooky" src="Database/Images/Halloween/png/spooky.png" alt="" decoding="async">
         </button>
       </section>
+
       <section class="gb">
-        <div id="ghostPopupOverlay">
-          <div class="ghostPopupContent">
+        <div class="popupOverlay" id="ghostPopupOverlay">
+          <div class="ghostPopupContent" role="dialog" aria-modal="true" aria-label="Charade">
             <p>
               Résous donc cette petite charade maudite pour continuer!
-              <br /><br />
-              Mon premier est le chiffre maudit du "GRAND PATRON",<br />
+              <br><br>
+              Mon premier est le chiffre maudit du "GRAND PATRON",<br>
               Mon second est ce que tous les enfants ont quand les monstres
-              apparaissent,<br /><br />
+              apparaissent,<br><br>
               Ferme, et clique sur mon tout si tu n'es pas froussard...
             </p>
-            <a href="javascript:void(0)" class="ghostPopupExit" onclick="ghostTogglePopup();">FERMER</a>
+            <button type="button" class="ghostPopupExit">FERMER</button>
           </div>
         </div>
-        <button class="ghostButton" onclick="ghostSound();ghostTogglePopup();">
-          <p class="clique">CLIQUE ICI SI TU OSES!</p>
-          <img id="ghost" src="Database/Images/Halloween/png/funnyGhost.png" alt="png"/>
+        <button type="button" class="ghostButton" id="ghostBtn" aria-haspopup="dialog" aria-expanded="false">
+          <span class="clique">CLIQUE ICI SI TU OSES!</span>
+          <img id="ghost" src="Database/Images/Halloween/png/funnyGhost.png" alt="Un fantôme rigolo" decoding="async">
         </button>
-      </section>      
+      </section>
+
       <footer>HAPPY HALLOWEEN !</footer>
     </main>
-    <script type="text/javascript" src="script.min.js"></script>
   </body>
 </html>
